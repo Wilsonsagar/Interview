@@ -15,7 +15,7 @@ public class Solution {
 	{
 		return Arrays.equals(arr1, arr2);
 	}
-// while i < N lopala i++ 
+
 	private static void search(char[] pat, char[] txt)
 {
 		int M = pat.length;
