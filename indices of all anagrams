@@ -1,0 +1,53 @@
+Find the indices of all anagrams of a given word in a  another word. For example: Find the indices of all the anagrams of AB in ABCDBACDAB 
+
+
+
+import java.util.Arrays;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		String txt = "ABCDBACDAB";
+		String pat = "AB";
+		search(pat.toCharArray(), txt.toCharArray());
+	}
+	private static Boolean compare(char[] arr1, char[] arr2)
+	{
+		return Arrays.equals(arr1, arr2);
+	}
+// while i < N lopala i++ 
+	private static void search(char[] pat, char[] txt)
+{
+		int M = pat.length;
+		int N = txt.length;
+		char[] p = Arrays.copyOf(pat, N);
+		int charpos = 0;
+		while(charpos < N)
+		{
+			char[] q = new char[N];
+			if(N - charpos < M)
+			{
+				break;
+			}
+			for(int posb = charpos ; posb < (charpos + M) ; posb++)
+			{
+				q[posb] = txt[posb];
+				
+			}
+			
+			Arrays.sort(p);
+			Arrays.sort(q);
+			System.out.println("1::>"+Arrays.toString(p));
+			System.out.println("2::>"+Arrays.toString(q));
+			if(compare(p, q))
+			{
+				System.out.println(charpos+"\n");
+			}
+			charpos++;
+		}
+	
+			
+		}
+		
+		
+}
