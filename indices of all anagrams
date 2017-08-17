@@ -1,7 +1,5 @@
 Find the indices of all anagrams of a given word in a  another word. For example: Find the indices of all the anagrams of AB in ABCDBACDAB 
 
-
-
 import java.util.Arrays;
 
 public class Solution {
@@ -11,43 +9,38 @@ public class Solution {
 		String pat = "AB";
 		search(pat.toCharArray(), txt.toCharArray());
 	}
-	private static Boolean compare(char[] arr1, char[] arr2)
-	{
+
+	// compares 2 arrays and returns true if they are same
+	private static Boolean compare(char[] arr1, char[] arr2) {
 		return Arrays.equals(arr1, arr2);
 	}
 
-	private static void search(char[] pat, char[] txt)
-{
+	private static void search(char[] pat, char[] txt) {
 		int M = pat.length;
 		int N = txt.length;
 		char[] p = Arrays.copyOf(pat, N);
 		int charpos = 0;
-		while(charpos < N)
-		{
+		// loop for each position
+		while (charpos < N) {
 			char[] q = new char[N];
-			if(N - charpos < M)
-			{
+			// when the array position of text reaches pattern length break
+			if (N - charpos < M) {
 				break;
 			}
-			for(int posb = charpos ; posb < (charpos + M) ; posb++)
-			{
+			// loop for M characters
+			for (int posb = charpos; posb < (charpos + M); posb++) {
 				q[posb] = txt[posb];
-				
+
 			}
-			
+			// sort both arrays before comparing
 			Arrays.sort(p);
 			Arrays.sort(q);
-			System.out.println("1::>"+Arrays.toString(p));
-			System.out.println("2::>"+Arrays.toString(q));
-			if(compare(p, q))
-			{
-				System.out.println(charpos+"\n");
+			if (compare(p, q)) {
+				System.out.println(charpos);
 			}
 			charpos++;
 		}
-	
-			
-		}
-		
-		
+
+	}
+
 }
